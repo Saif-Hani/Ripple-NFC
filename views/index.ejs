@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Website</h1>
+    <p>Please log in or sign up to access your dashboard.</p>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h2>Login</h2>
+      <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+      </form>
+
+      <!-- Error Messages -->
+      <% if (error) { %>
+        <div class="error">
+          <% if (error === 'empty') { %>
+            <p>Please fill out all fields!</p>
+          <% } else if (error === 'invalid') { %>
+            <p>Invalid username or password!</p>
+          <% } else if (error === 'exists') { %>
+            <p>Username already exists!</p>
+          <% } else { %>
+            <p>An unexpected error occurred. Please try again.</p>
+          <% } %>
+        </div>
+      <% } %>
+
+      <hr>
+
+      <h2>Signup</h2>
+      <form action="/signup" method="POST">
+        <input type="text" name="username" placeholder="Choose a Username" required><br>
+        <input type="password" name="password" placeholder="Choose a Password" required><br>
+        <button type="submit">Signup</button>
+      </form>
+
+      <h2>Forgot Password?</h2>
+      <form action="/reset-password" method="POST">
+        <input type="text" name="username" placeholder="Enter your Username" required><br>
+        <button type="submit">Reset Password</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>
